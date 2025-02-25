@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MeetUp App</string>
+
+    <!--  Bottom Navigation Labels  -->
+    <string name="home">Home</string>
+    <string name="connections">Connections</string>
+    <string name="explore">Explore</string>
+    <string name="notifications">Notifications</string>
+    <string name="messages">Messages</string>
+    <!--  Bottom Navigation Labels  -->
+
+    <!--  Intro Screen  -->
+    <string name="intro_header">We are what we do</string>
+    <string name="sign_up_button_text">Sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Log in</string>
+    <!--  Intro Screen  -->
+</resources>
