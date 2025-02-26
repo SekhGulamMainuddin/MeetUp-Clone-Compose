@@ -31,4 +31,14 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="cookie_policy">Cookie Policy</string>
     <!--  Login Screen  -->
+
+    <!--  SignUp Screen  -->
+    <string name="sign_up_title_1">Sign up</string>
+    <string name="sign_up_title_2">Sign up to continue</string>
+    <string name="sign_up_desc">Save your spot at events and stay on top of what\'s happening next</string>
+    <string name="continue_with_email">Continue with Email</string>
+    <string name="sign_in">Sign in</string>
+    <!--  SignUp Screen  -->
+
+
 </resources>
