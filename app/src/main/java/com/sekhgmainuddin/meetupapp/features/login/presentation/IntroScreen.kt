@@ -2,6 +2,7 @@ package com.sekhgmainuddin.meetupapp.features.login.presentation
 
 import MeetupCloneTheme
 import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,14 +37,12 @@ import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import com.sekhgmainuddin.meetupapp.R
 import com.sekhgmainuddin.meetupapp.core.ui.composable.PrimaryButton
-import com.sekhgmainuddin.meetupapp.core.ui.theme.SecondaryDark
 import com.sekhgmainuddin.meetupapp.core.ui.theme.SecondaryLight
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 
-@Preview()
 @Composable
-fun IntroScreen(navController: NavController = rememberNavController()) {
+fun IntroScreen(navController: NavController) {
     val context = LocalContext.current
 
     var backgroundImageIndex by remember {
@@ -58,94 +57,102 @@ fun IntroScreen(navController: NavController = rememberNavController()) {
 
     LaunchedEffect(key1 = Unit) {
         while (isActive) {
-            backgroundImageIndex = (backgroundImageIndex + 1) % 3
             delay(5000)
+            backgroundImageIndex = (backgroundImageIndex + 1) % 3
         }
     }
 
-    MeetupCloneTheme {
-        Scaffold {
-            Box(
+    Scaffold {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+        ) {
+            Crossfade(
+                targetState = backgroundImageIndex, label = "",
+                animationSpec = tween(1000)
+            ) {
+                AsyncImage(
+                    modifier = Modifier.fillMaxSize(),
+                    model = backgroundImages[it],
+                    contentDescription = "",
+                    contentScale = ContentScale.FillHeight,
+                )
+            }
+
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it)
+                    .padding(
+                        top = 100.dp,
+                        bottom = 60.dp,
+                        start = 20.dp,
+                        end = 20.dp
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Crossfade(
-                    targetState = backgroundImageIndex, label = ""
-                ) {
-                    AsyncImage(
-                        modifier = Modifier.fillMaxSize(),
-                        model = backgroundImages[it],
-                        contentDescription = "",
-                        contentScale = ContentScale.FillHeight,
-                    )
-                }
+                Image(
+                    modifier = Modifier.fillMaxWidth(0.6f),
+                    painter = painterResource(R.drawable.meetup_text_image),
+                    contentDescription = ""
+                )
 
-                Column(
+                Text(
+                    modifier = Modifier.padding(vertical = 10.dp),
+                    text = LocalContext.current.getString(R.string.intro_header),
+                    style = MaterialTheme.typography.displayLarge,
+                    color = SecondaryLight
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                PrimaryButton(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(
-                            top = 100.dp,
-                            bottom = 60.dp,
-                            start = 20.dp,
-                            end = 20.dp
-                        ),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(
-                        modifier = Modifier.fillMaxWidth(0.6f),
-                        painter = painterResource(R.drawable.meetup_text_image),
-                        contentDescription = ""
-                    )
-
-                    Text(
-                        modifier = Modifier.padding(vertical = 10.dp),
-                        text = LocalContext.current.getString(R.string.intro_header),
-                        style = MaterialTheme.typography.displayLarge,
+                        .fillMaxWidth()
+                        .height(52.dp),
+                    textStyle = MaterialTheme.typography.titleSmall.copy(
                         color = SecondaryLight
-                    )
+                    ),
+                    buttonText = context.getString(R.string.sign_up_button_text),
+                    onClick = {}
+                )
 
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    PrimaryButton(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(52.dp),
-                        textStyle = MaterialTheme.typography.titleSmall.copy(
-                            color = SecondaryLight
-                        ),
-                        buttonText = context.getString(R.string.sign_up_button_text)
-                    ) { }
-
-                    TextButton(
-                        modifier = Modifier.padding(top = 10.dp),
-                        onClick = {}
-                    ) {
-                        Text(
-                            text = buildAnnotatedString {
-                                withStyle(
-                                    style = MaterialTheme.typography.titleMedium.copy(
-                                        textDecoration = TextDecoration.Underline,
-                                        color = SecondaryLight,
-                                    ).toSpanStyle()
-                                ) {
-                                    append(context.getString(R.string.already_have_an_account))
-                                    append(" ")
-                                }
-                                withStyle(
-                                    style = MaterialTheme.typography.titleMedium.copy(
-                                        textDecoration = TextDecoration.Underline,
-                                        color = SecondaryLight,
-                                        fontWeight = FontWeight.ExtraBold,
-                                    ).toSpanStyle()
-                                ) {
-                                    append(context.getString(R.string.login))
-                                }
+                TextButton(
+                    modifier = Modifier.padding(top = 10.dp),
+                    onClick = {}
+                ) {
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    textDecoration = TextDecoration.Underline,
+                                    color = SecondaryLight,
+                                ).toSpanStyle()
+                            ) {
+                                append(context.getString(R.string.already_have_an_account))
+                                append(" ")
                             }
-                        )
-                    }
+                            withStyle(
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    textDecoration = TextDecoration.Underline,
+                                    color = SecondaryLight,
+                                    fontWeight = FontWeight.ExtraBold,
+                                ).toSpanStyle()
+                            ) {
+                                append(context.getString(R.string.login))
+                            }
+                        }
+                    )
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+fun IntroScreenPreview(modifier: Modifier = Modifier) {
+    MeetupCloneTheme(darkTheme = false) {
+        IntroScreen(rememberNavController())
     }
 }

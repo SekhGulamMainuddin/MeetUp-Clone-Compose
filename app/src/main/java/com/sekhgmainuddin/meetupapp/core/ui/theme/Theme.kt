@@ -10,7 +10,8 @@ fun MeetupCloneTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) {
+    // TODO : Revert theme to system default
+    val colorScheme = if (true) {
         darkColorScheme(
             primary = PrimaryDark,
             secondary = SecondaryDark,
@@ -20,7 +21,9 @@ fun MeetupCloneTheme(
             onPrimary = OnPrimaryDark,
             onBackground = OnBackgroundDark,
             onSurface = OnSurfaceDark,
-            error = ErrorDark
+            error = ErrorDark,
+            outline = OutlineDark,
+            outlineVariant = OutlineVariantDark
         )
     } else {
         lightColorScheme(
@@ -32,13 +35,15 @@ fun MeetupCloneTheme(
             onPrimary = OnPrimaryLight,
             onBackground = OnBackgroundLight,
             onSurface = OnSurfaceLight,
-            error = ErrorLight
+            error = ErrorLight,
+            outline = OutlineLight,
+            outlineVariant = OutlineVariantLight
         )
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
         typography = colorScheme.getTypography(),
-        content = content
+        content = content,
     )
 }

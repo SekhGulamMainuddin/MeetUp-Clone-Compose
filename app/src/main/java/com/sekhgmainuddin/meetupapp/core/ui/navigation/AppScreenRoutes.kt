@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.sekhgmainuddin.meetupapp.R
 
 object AppScreenRoutes {
+    const val LOGIN_ROUTE = "login"
     const val HOME_ROUTE = "home"
     const val CONNECTIONS_ROUTE = "connections"
     const val EXPLORE_ROUTE = "explore"

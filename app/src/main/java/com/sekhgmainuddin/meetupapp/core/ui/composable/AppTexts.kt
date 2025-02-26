@@ -1,5 +1,6 @@
 package com.sekhgmainuddin.meetupapp.core.ui.composable
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,6 +9,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun BodyLargeText(
@@ -343,4 +346,94 @@ fun DisplaySmallText(
         overflow = overflow,
         maxLines = maxLines ?: Int.MAX_VALUE
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BodyLargeTextPreview() {
+    BodyLargeText(text = "BodyLargeText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BodyMediumTextPreview() {
+    BodyMediumText(text = "BodyMediumText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BodySmallTextPreview() {
+    BodySmallText(text = "BodySmallText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TitleLargeTextPreview() {
+    TitleLargeText(text = "TitleLargeText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TitleMediumTextPreview() {
+    TitleMediumText(text = "TitleMediumText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TitleSmallTextPreview() {
+    TitleSmallText(text = "TitleSmallText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun HeadlineLargeTextPreview() {
+    HeadlineLargeText(text = "HeadlineLargeText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun HeadlineMediumTextPreview() {
+    HeadlineMediumText(text = "HeadlineMediumText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun HeadlineSmallTextPreview() {
+    HeadlineSmallText(text = "HeadlineSmallText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun LabelLargeTextPreview() {
+    LabelLargeText(text = "LabelLargeText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun LabelMediumTextPreview() {
+    LabelMediumText(text = "LabelMediumText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun LabelSmallTextPreview() {
+    LabelSmallText(text = "LabelSmallText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun DisplayLargeTextPreview() {
+    DisplayLargeText(text = "DisplayLargeText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun DisplayMediumTextPreview() {
+    DisplayMediumText(text = "DisplayMediumText", modifier = Modifier.padding(8.dp))
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun DisplaySmallTextPreview() {
+    DisplaySmallText(text = "DisplaySmallText", modifier = Modifier.padding(8.dp))
 }

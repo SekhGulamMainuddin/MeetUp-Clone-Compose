@@ -15,4 +15,20 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login">Log in</string>
     <!--  Intro Screen  -->
+        
+    <!--  Login Screen  -->
+    <string name="login_title">Hello again!</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="meetup_declaration_1">By continuing, you agree to Meetup\'s </string>
+    <string name="meetup_declaration_2">We will manage information about you as described in our</string>
+    <string name="meetup_declaration_3">and</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="cookie_policy">Cookie Policy</string>
+    <!--  Login Screen  -->
 </resources>
