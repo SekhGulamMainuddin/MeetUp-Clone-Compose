@@ -6,8 +6,8 @@ val PrimaryLight = Color(0xFFF65857)
 val PrimaryDark = Color(0xFFF65857)
 val SecondaryLight = Color(0xFFFFFFFF)
 val SecondaryDark = Color(0xFFFFFFFF)
-val TertiaryLight = Color(0xFF008194)
-val TertiaryDark = Color(0xFF008194)
+val TertiaryLight = Color(0xFF008294)
+val TertiaryDark = Color(0xFF008294)
 
 val BackgroundLight = Color(0xFFFFFFFF)
 val BackgroundDark = Color(0xFF121212)
@@ -38,4 +38,4 @@ val OutlineVariantLight = Color(0xFFa0a0a0)
 val OutlineVariantDark = Color(0xFFa0a0a0)
 
 
-val Blue1 = Color(0xFF4286f5)
+val Blue1 = Color(0xFF4285f4)

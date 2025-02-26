@@ -2,35 +2,25 @@ package com.sekhgmainuddin.meetupapp.features.login.presentation
 
 import MeetupCloneTheme
 import android.widget.Toast
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,14 +28,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
@@ -53,10 +39,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sekhgmainuddin.meetupapp.R
 import com.sekhgmainuddin.meetupapp.core.ui.composable.AppTextField
+import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithFacebookButton
+import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithGoogleButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.BodyMediumText
 import com.sekhgmainuddin.meetupapp.core.ui.composable.PrimaryButton
-import com.sekhgmainuddin.meetupapp.core.ui.theme.Blue1
-import com.sekhgmainuddin.meetupapp.core.ui.theme.OnBackgroundLight
+import com.sekhgmainuddin.meetupapp.core.ui.composable.TermsAndConditionsComposable
 import com.sekhgmainuddin.meetupapp.features.login.presentation.composables.PasswordTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -110,45 +97,15 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                PrimaryButton(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    onClick = {},
-                    buttonColor = Blue1,
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 10.dp)
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(30.dp)
-                            .clip(RoundedCornerShape(3.dp))
-                            .background(Color.White)
-                            .padding(8.dp),
-                        painter = painterResource(R.drawable.google_icon),
-                        contentDescription = "",
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(context.getString(R.string.continue_with_google))
-                    Spacer(modifier = Modifier.weight(1f))
+                AuthenticateWithGoogleButton {
+
                 }
 
-                PrimaryButton(
+                AuthenticateWithFacebookButton(
                     modifier = Modifier
-                        .padding(top = 20.dp)
-                        .fillMaxWidth(),
-                    onClick = {},
-                    buttonColor = OnBackgroundLight,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 10.dp)
+                    .padding(top = 20.dp)
                 ) {
-                    Image(
-                        modifier = Modifier
-                            .size(30.dp),
-                        painter = painterResource(R.drawable.facebook_icon),
-                        contentDescription = "",
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(context.getString(R.string.continue_with_facebook))
-                    Spacer(modifier = Modifier.weight(1f))
+
                 }
 
                 AppTextField(
@@ -226,62 +183,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 
             }
 
-            Column {
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 12.dp)
-                )
-                Text(
-                    buildAnnotatedString {
-                        append(context.getString(R.string.meetup_declaration_1))
-                        append(" ")
-
-                        withLink(
-                            LinkAnnotation.Clickable(
-                                tag = "terms_of_service",
-                                styles = highlightTextStyle,
-                                linkInteractionListener = {
-                                    Toast.makeText(context, "Terms Of Service", Toast.LENGTH_SHORT).show()
-                                }
-                            )
-                        ) {
-                            append(context.getString(R.string.terms_of_service))
-                        }
-                        append(". ")
-                        append(context.getString(R.string.meetup_declaration_2))
-                        append(" ")
-                        withLink(
-                            LinkAnnotation.Clickable(
-                                tag = "privacy_policy",
-                                styles = highlightTextStyle,
-                                linkInteractionListener = {
-                                    Toast.makeText(context, "Privacy Policy", Toast.LENGTH_SHORT).show()
-                                }
-                            )
-                        ) {
-                            append(context.getString(R.string.privacy_policy))
-                        }
-                        append(" ")
-                        append(context.getString(R.string.meetup_declaration_3))
-                        append(" ")
-                        withLink(
-                            LinkAnnotation.Clickable(
-                                tag = "cookie_policy",
-                                styles = highlightTextStyle,
-                                linkInteractionListener = {
-                                    Toast.makeText(context, "Cookie Policy", Toast.LENGTH_SHORT).show()
-                                }
-                            )
-                        ) {
-                            append(context.getString(R.string.cookie_policy))
-                        }
-                        append(".")
-                    },
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.outlineVariant,
-                    ),
-                    textAlign = TextAlign.Center
-                )
-            }
+            TermsAndConditionsComposable()
         }
     }
 }
