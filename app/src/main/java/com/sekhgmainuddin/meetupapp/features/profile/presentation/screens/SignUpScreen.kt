@@ -1,20 +1,16 @@
-package com.sekhgmainuddin.meetupapp.features.profile.presentation
+package com.sekhgmainuddin.meetupapp.features.profile.presentation.screens
 
 import MeetupCloneTheme
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +18,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
@@ -34,25 +29,21 @@ import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithEmailButt
 import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithFacebookButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithGoogleButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.BodyMediumText
+import com.sekhgmainuddin.meetupapp.core.ui.composable.CustomAppBar
 import com.sekhgmainuddin.meetupapp.core.ui.composable.TermsAndConditionsComposable
 import com.sekhgmainuddin.meetupapp.core.ui.composable.TitleMediumText
-import com.sekhgmainuddin.meetupapp.core.ui.theme.SecondaryLight
 
-@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SignUpScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     Scaffold(
         topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    Icon(
-                        Icons.AutoMirrored.Default.ArrowBack,
-                        modifier = Modifier.padding(start = 20.dp, end = 30.dp),
-                        contentDescription = "",
-                    )
+            CustomAppBar(
+                onBackPressed = {
+
                 },
-                title = { Text(context.getString(R.string.sign_up_title_1), style = MaterialTheme.typography.displaySmall) },
+                title = context.getString(R.string.sign_up_title_1),
             )
         }
     ) {

@@ -1,4 +1,4 @@
-package com.sekhgmainuddin.meetupapp.features.login.presentation
+package com.sekhgmainuddin.meetupapp.features.login.presentation.screens
 
 import MeetupCloneTheme
 import android.widget.Toast
@@ -12,15 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,11 +38,11 @@ import com.sekhgmainuddin.meetupapp.core.ui.composable.AppTextField
 import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithFacebookButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.AuthenticateWithGoogleButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.BodyMediumText
+import com.sekhgmainuddin.meetupapp.core.ui.composable.CustomAppBar
 import com.sekhgmainuddin.meetupapp.core.ui.composable.PrimaryButton
 import com.sekhgmainuddin.meetupapp.core.ui.composable.TermsAndConditionsComposable
 import com.sekhgmainuddin.meetupapp.features.login.presentation.composables.PasswordTextField
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
@@ -70,15 +66,11 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    Icon(
-                        Icons.AutoMirrored.Default.ArrowBack,
-                        modifier = Modifier.padding(start = 20.dp, end = 30.dp),
-                        contentDescription = "",
-                    )
+            CustomAppBar(
+                onBackPressed = {
+
                 },
-                title = { Text(context.getString(R.string.login_title), style = MaterialTheme.typography.displaySmall) },
+                title = context.getString(R.string.login_title),
             )
         }
     ) {
@@ -103,7 +95,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 
                 AuthenticateWithFacebookButton(
                     modifier = Modifier
-                    .padding(top = 20.dp)
+                        .padding(top = 20.dp)
                 ) {
 
                 }

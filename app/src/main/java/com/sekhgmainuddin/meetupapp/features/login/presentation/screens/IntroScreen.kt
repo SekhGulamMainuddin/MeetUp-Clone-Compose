@@ -1,4 +1,4 @@
-package com.sekhgmainuddin.meetupapp.features.login.presentation
+package com.sekhgmainuddin.meetupapp.features.login.presentation.screens
 
 import MeetupCloneTheme
 import androidx.compose.animation.Crossfade

@@ -23,7 +23,7 @@ fun MeetupCloneTheme(
             onSurface = OnSurfaceDark,
             error = ErrorDark,
             outline = OutlineDark,
-            outlineVariant = OutlineVariantDark
+            outlineVariant = OutlineVariantDark,
         )
     } else {
         lightColorScheme(

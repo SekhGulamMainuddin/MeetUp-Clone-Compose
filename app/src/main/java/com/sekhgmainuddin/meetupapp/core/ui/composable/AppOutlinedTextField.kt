@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -17,12 +19,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AppTextField(
+fun AppOutlinedTextField(
     modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
@@ -30,15 +31,22 @@ fun AppTextField(
     customLabel: @Composable (() -> Unit)? = null,
     singleLine: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
-    labelStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(
+    labelStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
         color = MaterialTheme.colorScheme.tertiary,
     ),
+    placeholderText: String? = null,
+    placeholderTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
+        color = MaterialTheme.colorScheme.outlineVariant,
+    ),
+    placeholder: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     errorText: String? = null,
 ) {
     Column {
-        TextField(
+        OutlinedTextField(
             modifier = modifier,
             value = value,
             textStyle = textStyle,
@@ -47,17 +55,20 @@ fun AppTextField(
                 if (label != null)
                     Text(text = label, style = labelStyle)
             },
+            trailingIcon = trailingIcon,
+            leadingIcon = leadingIcon,
+            placeholder = placeholder ?: placeholderText?.let { { Text(text = it, style = placeholderTextStyle) } },
             singleLine = singleLine,
             keyboardActions = keyboardActions,
             keyboardOptions = keyboardOptions,
-            colors = TextFieldDefaults.colors().copy(
+            colors = OutlinedTextFieldDefaults.colors().copy(
                 focusedIndicatorColor = MaterialTheme.colorScheme.tertiary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant,
                 disabledIndicatorColor = MaterialTheme.colorScheme.outline,
                 focusedContainerColor = Color.Transparent,
                 unfocusedContainerColor = Color.Transparent,
                 disabledContainerColor = Color.Transparent,
-                cursorColor = MaterialTheme.colorScheme.tertiary,
+                cursorColor = MaterialTheme.colorScheme.secondary,
             )
         )
 
@@ -74,12 +85,12 @@ fun AppTextField(
 
 @Preview
 @Composable
-private fun AppTextFieldPreview(modifier: Modifier = Modifier) {
+private fun AppOutlinedTextFieldPreview(modifier: Modifier = Modifier) {
     var textFieldValue by remember {
         mutableStateOf("")
     }
     MeetupCloneTheme {
-        AppTextField(
+        AppOutlinedTextField(
             value = textFieldValue,
             label = "Email",
             onValueChange = {

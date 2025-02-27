@@ -38,6 +38,13 @@
     <string name="sign_up_desc">Save your spot at events and stay on top of what\'s happening next</string>
     <string name="continue_with_email">Continue with Email</string>
     <string name="sign_in">Sign in</string>
+    <string name="next">Next</string>
+    <string name="name">Name</string>
+    <string name="name_desc">Your name will be public and we\'ll send updates to the email address you provide.</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="gender">Gender</string>
+    <string name="not_set">Not set</string>
+    <string name="birthday_and_gender_desc">Age and gender help improve recommendations, and unlock event and group details.</string>
     <!--  SignUp Screen  -->
 
 
